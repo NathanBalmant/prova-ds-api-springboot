@@ -9,6 +9,7 @@ public class CarroDTO {
     private String placa;
     private String nomePessoa;
     private String cpfPessoa;
+    private Double pontuacao;
 
     public CarroDTO() {
 
@@ -19,6 +20,7 @@ public class CarroDTO {
         this.placa = carro.getPlaca();
         this.nomePessoa = carro.getPessoa().getNome();
         this.cpfPessoa = carro.getPessoa().getCpf();
+        this.pontuacao = carro.getPontuacao();
 
     }
 
@@ -36,6 +38,10 @@ public class CarroDTO {
 
     public String getCpfPessoa() {
         return cpfPessoa;
+    }
+
+    public Double getPontuacao() {
+        return pontuacao;
     }
 
   

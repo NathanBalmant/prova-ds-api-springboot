@@ -9,4 +9,5 @@ import java.util.List;
 
 public interface CarroRepository extends JpaRepository <Carro,Long> {
     List<Carro> findByPessoaId(Long pessoaid);
+    
 }

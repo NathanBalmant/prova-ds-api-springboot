@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.cefet.prova_20223004358.dto.CarroDTO;
+import com.cefet.prova_20223004358.dto.MultaDTO;
 import com.cefet.prova_20223004358.services.CarroService;
 
 @RestController
@@ -49,5 +50,12 @@ public class CarroController {
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         carroService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    // GET /pessoas/{id}/carros
+    @GetMapping("/{id}/multas")
+    public ResponseEntity<List<MultaDTO>> listarMultasPorCarro(@PathVariable Long id) {
+        List<MultaDTO> multas = carroService.listaDeMultasRelacionadosCarro(id);
+        return ResponseEntity.ok(multas);
     }
 }

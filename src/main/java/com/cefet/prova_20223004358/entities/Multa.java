@@ -8,75 +8,66 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "tb_carros", uniqueConstraints = {
-    @UniqueConstraint(columnNames = "placa")
-})
-public class Carro {
+@Table(name = "tb_multas")
+public class Multa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
-    private String placa;
+
+    @Column(nullable = false)
+    private Double pontos;
+
 
     @ManyToOne
-    @JoinColumn(name = "pessoa_id", nullable = false)
-    private Pessoa pessoa;
+    @JoinColumn(name = "carro_id", nullable = false)
+    private Carro carro;
 
-    private Double pontuacao;
 
-    // Construtores
-    public Carro() {}
+    public Multa(){
 
-   
+    }
 
-    public Carro(Long id, String placa, Pessoa pessoa, Double pontuacao) {
+
+    public Multa(Long id, Double pontos, Carro carro) {
         this.id = id;
-        this.placa = placa;
-        this.pessoa = pessoa;
-        this.pontuacao = pontuacao;
+        this.pontos = pontos;
+        this.carro = carro;
     }
 
 
-
-    // Getters e Setters
-
-     public Double getPontuacao() {
-        return pontuacao;
-    }
-
-    public void setPontuacao(Double pontuacao) {
-        this.pontuacao = pontuacao;
-    }
-
-    
     public Long getId() {
         return id;
     }
+
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getPlaca() {
-        return placa;
+
+    public Double getPontos() {
+        return pontos;
     }
 
-    public void setPlaca(String placa) {
-        this.placa = placa;
+
+    public void setPontos(Double pontos) {
+        this.pontos = pontos;
     }
 
-    public Pessoa getPessoa() {
-        return pessoa;
+
+    public Carro getCarro() {
+        return carro;
     }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
+
+    public void setCarro(Carro carro) {
+        this.carro = carro;
     }
+
 
     @Override
     public int hashCode() {
@@ -86,6 +77,7 @@ public class Carro {
         return result;
     }
 
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -94,13 +86,15 @@ public class Carro {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Carro other = (Carro) obj;
+        Multa other = (Multa) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
         } else if (!id.equals(other.id))
             return false;
         return true;
-    } 
+    }
+
     
+
 }
