@@ -1,5 +1,5 @@
-# prova-ds-api-springboot
-# 📘 Prova Prática - (Spring Boot API)
+# ds-api-springboot
+# 📘 - (Spring Boot API)
 
 Projeto desenvolvido com Spring Boot como parte da Prova Prática de Desenvolvimento de Sistemas.
 
